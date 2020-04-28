@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Keyboard from "hangul-virtual-keyboard";
 import { parseProps, changedProps } from "../services/Utilities";
-import "simple-keyboard/build/css/index.css";
+import "hangul-virtual-keyboard/build/css/index.css";
 
 const KeyboardReact = props => {
   const cssClass = props.baseClass || "react-simple-keyboard";

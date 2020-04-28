@@ -1,7 +1,7 @@
 import React from "react";
 import Keyboard from "../lib";
-import "./css/App.css";
 import Hangul from "hangul-js";
+import "./css/App.css";
 
 let buttonArray = [];
 let inputText = "";
