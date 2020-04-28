@@ -1,7 +1,7 @@
 {
-  "name": "react-simple-keyboard",
-  "version": "2.3.7",
-  "description": "React.js Virtual Keyboard",
+  "name": "react-hangul-virtual-keyboard",
+  "version": "1.0.0",
+  "description": "React.js Virtual Keyboard (Korean layout, English layout)",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
@@ -15,13 +15,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hodgef/react-simple-keyboard"
+    "url": "https://github.com/LeeSongA/react-hangul-virtual-keyboard"
   },
-  "author": "Francisco Hodge <hello@franciscohodge.com> (https://github.com/hodgef)",
+  "author": "Song-A Lee <thddk0317@nate.com> (https://github.com/LeeSongA)",
   "bugs": {
-    "url": "https://github.com/hodgef/react-simple-keyboard/issues"
+    "url": "https://github.com/LeeSongA/react-hangul-virtual-keyboard/issues"
   },
-  "homepage": "https://virtual-keyboard.js.org/",
+  "homepage": "https://github.com/LeeSongA/react-hangul-virtual-keyboard",
   "keywords": [
     "react",
     "reactjs",
@@ -37,7 +37,10 @@
     "touch-screen",
     "kiosk",
     "osk",
-    "js"
+    "js",
+    "Korean-layout",
+    "English-layout",
+    "hangul.js"
   ],
   "license": "MIT",
   "devDependencies": {
@@ -96,7 +99,6 @@
     "resolve-url-loader": "3.1.1",
     "sass-loader": "8.0.2",
     "semver": "7.3.2",
-    "simple-keyboard": "^2.29.2",
     "style-loader": "1.1.4",
     "terser-webpack-plugin": "2.3.5",
     "ts-pnp": "1.2.0",
