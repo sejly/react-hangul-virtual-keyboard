@@ -1,27 +1,57 @@
 import React from "react";
 import Keyboard from "../lib";
 import "./css/App.css";
+import Hangul from "hangul-js";
+
+let buttonArray = [];
+let inputText = "";
 
 class App extends React.Component {
   state = {
     input: "",
     layoutName: "default",
+    language: "default",
     buttonTheme: []
   };
 
   keyboard = React.createRef();
 
-  onChange = input =>
-    this.setState({ input }, () => console.log("Input changed", input));
+  onChange = input => {
+    this.setState({ input }, () => console.log("Input changed", inputText));
+    console.log("inputText", inputText);
+  };
 
   onKeyPress = button => {
     console.log("Button pressed", button);
+    if (
+      ![
+        "{shift}",
+        "{language}",
+        "{enter}",
+        "{bksp}",
+        "{space}",
+        "{tab}"
+      ].includes(button)
+    ) {
+      buttonArray.push(button);
+    }
+    if (button === "{bksp}") {
+      buttonArray.pop();
+    }
+    if (button === "{space}") {
+      buttonArray.push(" ");
+    }
+    if (button === "{tab}") {
+      buttonArray.push("  ");
+    }
+
+    inputText = Hangul.assemble(buttonArray);
 
     /**
      * Shift functionality
      */
-    if (["{capslock}", "{shiftleft}", "{shiftright}"].includes(button))
-      this.handleShiftButton();
+    if (button === "{shift}") this.handleShiftButton();
+    if (button === "{language}") this.handleLanguageButton();
   };
 
   handleShiftButton = () => {
@@ -33,6 +63,16 @@ class App extends React.Component {
     this.setState({ layoutName: shiftToggle });
   };
 
+  handleLanguageButton() {
+    console.log("here");
+    const {
+      state: { language }
+    } = this;
+    const languageToggle = language === "default" ? "english" : "default";
+
+    this.setState({ language: languageToggle });
+  }
+
   onChangeInput = event => {
     const input = event.target.value;
 
@@ -43,7 +83,7 @@ class App extends React.Component {
 
   render() {
     const {
-      state: { input, layoutName, buttonTheme },
+      state: { input, layoutName, language, buttonTheme },
       onChangeInput,
       onChange,
       onKeyPress
@@ -54,7 +94,7 @@ class App extends React.Component {
         <div className="screenContainer">
           <textarea
             className="inputContainer"
-            value={input}
+            value={inputText}
             onChange={onChangeInput}
           />
         </div>
@@ -64,25 +104,10 @@ class App extends React.Component {
           onChange={onChange}
           onKeyPress={onKeyPress}
           layoutName={layoutName}
+          language={language}
           buttonTheme={buttonTheme}
           newLineOnEnter
           physicalKeyboardHighlight
-          layout={{
-            default: [
-              "` 1 2 3 4 5 6 7 8 9 0 - = {backspace}",
-              "{tab} q w e r t y u i o p [ ] \\",
-              "{capslock} a s d f g h j k l ; ' {enter}",
-              "{shiftleft} z x c v b n m , . / {shiftright}",
-              ".com @ {space}"
-            ],
-            shift: [
-              "~ ! @ # $ % ^ & * ( ) _ + {backspace}",
-              "{tab} Q W E R T Y U I O P { } |",
-              '{capslock} A S D F G H J K L : " {enter}',
-              "{shiftleft} Z X C V B N M < > ? {shiftright}",
-              ".com @ {space}"
-            ]
-          }}
           debug
         />
       </div>

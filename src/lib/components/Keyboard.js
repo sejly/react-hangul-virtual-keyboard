@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import Keyboard from "simple-keyboard";
+import Keyboard from "hangul-virtual-keyboard";
 import { parseProps, changedProps } from "../services/Utilities";
 import "simple-keyboard/build/css/index.css";
 

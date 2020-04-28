@@ -189,5 +189,9 @@
         "@babel/plugin-proposal-class-properties"
       ]
     ]
+  },
+  "dependencies": {
+    "hangul-js": "^0.2.6",
+    "hangul-virtual-keyboard": "^1.0.2"
   }
 }
